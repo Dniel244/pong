@@ -1,4 +1,5 @@
 void intro() {
+ 
   background(darkBlue);
   fill(white);
   textSize(150);
@@ -29,11 +30,48 @@ void intro() {
   triangle(trix, triy, trix+70, triy+70, trix, triy+140);
   }
   
+  //2 player
+  fill(stroke);
+  stroke(stroke);
+  square(700, 500, 40);
+  textSize(20);
+  text("2 player",720, 570);
+  
+   if (mouseX > 700 && mouseX < 740 && mouseY > 500 && mouseY < 540) {
+     stroke = green;
+   } else {
+     stroke = red;
+   }
+  
+  
+  
+  
+  
+
+  
+
 }
+
+
+
 
 void introClicks() {
   if (mouseX > trix && mouseX < trix+70 && mouseY > triy && mouseY < triy+140) {
     mode = GAME;
+    song.pause();
+    AI = false;
   }
+  
+ if (mouseX > 700 && mouseX < 740 && mouseY > 500 && mouseY < 540) {
+   mode = GAME;
+   AI = true;
+   song.pause();
+ }
+  
+  
+  
+  
+  
+  
   
 }

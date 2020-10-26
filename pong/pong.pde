@@ -1,3 +1,13 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+Minim minim;
+AudioPlayer song;
+
 ///Daniel ALtshuler
 //1-1
 //October 15, 2020
@@ -17,6 +27,8 @@ color purple = #6906BC;
 color red = #E50505;
 color white = #FFFFFF;
 color black = #000000;
+color green = #4DFF03;
+color stroke;
 
 color resumeFill;
 
@@ -26,17 +38,24 @@ float ballx, ballx2,  bally, bally2, balld, ballvx, ballvy; //ball
 float trix, triy;
 float pausex, pausex2, pausey;
 float ex, xx, ix, tx;
+float tpx;
 
 int rscore, lscore;
 
 boolean rwinner;
 
 //keyboard variables
-boolean wkey, skey, upkey, downkey;
+boolean wkey, skey, upkey, downkey, AI, choosing, deselect;
 
 
 
 void setup() {
+  
+   minim = new Minim(this);
+  song = minim.loadFile("intro.wav");
+  song.rewind();
+  song.play();
+  
   background(darkBlue);
   size(800, 600);
   mode = INTRO;
@@ -81,6 +100,12 @@ void setup() {
   //initialize score
   rscore = 0;
   lscore = 0;
+  
+  //imitialize AI
+  AI = true;
+  tpx = 900;
+  choosing = true;
+  
   
   
 }
